@@ -6,4 +6,8 @@
     <RootNamespace>cosmos_db_console</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.DocumentDB" Version="2.1.1" />
+  </ItemGroup>
+
 </Project>
