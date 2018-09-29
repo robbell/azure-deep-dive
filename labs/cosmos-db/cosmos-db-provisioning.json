@@ -44,5 +44,15 @@
           "bootcamp-session": "azure-deep-dive"
         }
       }
-    ]
+    ],
+    "outputs": {
+      "Endpoint": {
+        "type": "string",
+        "value": "[reference(resourceId(resourceGroup().name, 'Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccountName')), '2015-04-08').documentEndpoint]"
+      },
+      "PrimaryKey": {
+        "type" : "string",
+        "value": "[listKeys(resourceId(resourceGroup().name, 'Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccountName')), '2015-04-08').primaryMasterKey]"
+      }
+    }
   }
