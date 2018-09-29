@@ -83,3 +83,27 @@ My Azure Deep Dive course material from the ASOS Emerging Talent Bootcamp.
     * Competing consumers
     * Circuit breaker
     * Caching 
+
+## Running the labs
+
+### Login
+
+`az login`
+
+### Set the active subsciption
+
+Get the list of subscriptions:
+
+`az acount list`
+
+Set the active subscription:
+
+`az account set -s [SubscriptionId]`
+
+### Create a resource group
+
+`az group create -l northeurope -n [MyResourceGroupName] --tags bootcamp-session=azure-deep-dive`
+
+### Delete a resource group
+
+`az group delete -n [MyResourceGroupName]`
