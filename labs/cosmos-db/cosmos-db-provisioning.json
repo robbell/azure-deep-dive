@@ -46,7 +46,7 @@
       }
     ],
     "outputs": {
-      "Endpoint": {
+      "EndpointUri": {
         "type": "string",
         "value": "[reference(resourceId(resourceGroup().name, 'Microsoft.DocumentDB/databaseAccounts', parameters('databaseAccountName')), '2015-04-08').documentEndpoint]"
       },

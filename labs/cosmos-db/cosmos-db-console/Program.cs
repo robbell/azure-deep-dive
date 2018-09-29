@@ -1,12 +1,50 @@
 ﻿using System;
+using System.Linq;
+using Microsoft.Azure.Documents;
+using Microsoft.Azure.Documents.Client;
+using Newtonsoft.Json;
 
-namespace cosmos_db_console
+namespace CosmosDb.Console
 {
-    class Program
+    public static class Program
     {
-        static void Main(string[] args)
+        private const string endpointUri = "[Replace with your EndpointUri]";
+        private const string primaryKey = "[Replace with your PrimaryKey]";
+        private static DocumentClient client;
+        private const string databaseName = "my-database";
+        private const string collectionName = "my-collection";
+
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            client = new DocumentClient(new Uri(endpointUri), primaryKey);
+
+            client.CreateDatabaseIfNotExistsAsync(new Database { Id = databaseName }).Wait();
+
+            client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri(databaseName), new DocumentCollection { Id = collectionName }).Wait();
+
+            var myDocumentToPersist = new MyDocument
+            {
+                Id = Guid.NewGuid().ToString(),
+                Message = "test",
+                Offset = 123
+            };
+
+            client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri(databaseName, collectionName), myDocumentToPersist).Wait();
+
+            var readDocumentById = client.ReadDocumentAsync<MyDocument>(UriFactory.CreateDocumentUri(databaseName, collectionName, myDocumentToPersist.Id)).Result;
+
+            var readDocumentsBySearching =
+                client.CreateDocumentQuery<MyDocument>(UriFactory.CreateDocumentCollectionUri(databaseName, collectionName))
+                      .Where(d => d.Message == myDocumentToPersist.Message)
+                      .ToList();
         }
+    }
+
+    public class MyDocument
+    {
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
+        public string Message { get; set; }
+        public int Offset { get; set; }
     }
 }
