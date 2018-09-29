@@ -92,7 +92,7 @@ My Azure Deep Dive course material from the ASOS Emerging Talent Bootcamp.
 
 ### Set the active subsciption
 
-Get the list of subscriptions:
+Get a list of available subscriptions:
 
 `az acount list`
 
@@ -103,6 +103,10 @@ Set the active subscription:
 ### Create a resource group
 
 `az group create -l northeurope -n [MyResourceGroupName] --tags bootcamp-session=azure-deep-dive`
+
+### Create a deployment
+
+`az group deployment create -g [MyResourceGroupName] --template-file .\my-provisioning-template.json`
 
 ### Delete a resource group
 
