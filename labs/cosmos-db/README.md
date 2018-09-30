@@ -1,6 +1,6 @@
 # Cosmos DB lab
 
-## Provision Service Bus using ARM
+## Provision a Cosmos DB database using ARM
 
 ### Log in to the Azure CLI
 
@@ -24,13 +24,15 @@ Set the active subscription:
 
 `az group deployment create -g [MyResourceGroupName] --template-file .\cosmos-db-provisioning.json`
 
+When deployment begins you will be prompted for a database account name. This must be lower case and globally unique.
+
 After deployment is complete, keep hold of the `outputs` section.
 
 ## Running the project
 
 ### Edit the solution
 
-Replace the `endpointUri` and `primaryKey` with those taken from the `outputs` section of the deployment.
+Replace the `endpointUri` and `primaryKey` in `Program.cs` with those taken from the `outputs` section of the deployment.
 
 ### Run the application
 
