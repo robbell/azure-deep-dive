@@ -54,7 +54,10 @@
             }
           ]
         }
-      ]
+      ],
+      "tags": {
+        "bootcamp-session": "azure-deep-dive"
+      }
     }
   ],
   "outputs": {
