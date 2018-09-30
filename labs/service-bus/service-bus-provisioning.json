@@ -1,0 +1,59 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "serviceBusNamespaceName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the Service Bus Namespace"
+      }
+    }
+  },
+  "variables": {
+    "location": "[resourceGroup().location]",
+    "serviceBusTopicName": "MyTopic",
+    "serviceBusSubscription1Name": "MyFirstSubscription",
+    "serviceBusSubscription2Name": "MySecondSubscription"
+  },
+  "resources": [
+    {
+      "apiVersion": "2017-04-01",
+      "name": "[parameters('serviceBusNamespaceName')]",
+      "type": "Microsoft.ServiceBus/namespaces",
+      "location": "[variables('location')]",
+      "properties": {},
+      "resources": [
+        {
+          "apiVersion": "2017-04-01",
+          "name": "[variables('serviceBusTopicName')]",
+          "type": "topics",
+          "dependsOn": [
+            "[concat('Microsoft.ServiceBus/namespaces/', parameters('serviceBusNamespaceName'))]"
+          ],
+          "properties": {
+            "path": "[variables('serviceBusTopicName')]"
+          },
+          "resources": [
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[variables('serviceBusSubscription1Name')]",
+              "type": "subscriptions",
+              "dependsOn": [
+                "[variables('serviceBusTopicName')]"
+              ]
+            },
+            {
+              "apiVersion": "2017-04-01",
+              "name": "[variables('serviceBusSubscription2Name')]",
+              "type": "subscriptions",
+              "dependsOn": [
+                "[variables('serviceBusTopicName')]"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "outputs": {}
+}
