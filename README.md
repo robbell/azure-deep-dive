@@ -10,7 +10,7 @@ My Azure Deep Dive course material from the ASOS Emerging Talent Bootcamp.
 
 ## Course outline
 
-### Part 1 - Azure resource types
+### Part 1 - Azure resources
 
 * Why use the cloud?
     * "Cloud computing is just using somebody else's computers"
@@ -33,63 +33,24 @@ My Azure Deep Dive course material from the ASOS Emerging Talent Bootcamp.
     * Compute options
     * Database options
     * Service Bus
+        * Messaging vs direct calls: https://blogs.mulesoft.com/dev/connectivity-dev/why-messaging-queues-suck/
+    * Azure Resource Manager
+        * https://resources.azure.com
 * Labs
-    * TBC
+    * Cosmos DB
+    * Service Bus
 
-### Part 2 - Cloud patterns
+### Part 2 - Architecting for the cloud
 
 * Intro
-* Common cloud patterns and the problems they solve 
-    * Messaging
-        * Messaging vs direct calls - https://blogs.mulesoft.com/dev/connectivity-dev/why-messaging-queues-suck/
-        * Push/pull, fat/thin messages
-        * Pros cons of both approaches
-        * Security
-        * Eventual consistency, CAP theorem
-        * Competing consumers with queues and subscriptions, use of topics
-        * Priority queues
-    * Load levelling
-    * Throttling
-    * Caching
-        * Cache aside vs read through vs write through
-    * Event sourcing? Might be a bit too deep
-    * Sharding
-        * Examples?
-    * Materialised view
-    * CDN
-    * Circuit breaker
-    * Retry
-* Demos incorporating different patterns:
-    * Queues/topics for load levelling
-    * Throttling
+* Common cloud patterns and the problems they solve
+    * General, repeatable solutions to commonly occurring problems
+    * Queue-based load levelling
     * Competing consumers
-    * Circuit breaker
-    * Caching 
-
-## Running the labs
-
-### Login
-
-`az login`
-
-### Set the active subsciption
-
-Get a list of available subscriptions:
-
-`az acount list`
-
-Set the active subscription:
-
-`az account set -s [SubscriptionId]`
-
-### Create a resource group
-
-`az group create -l northeurope -n [MyResourceGroupName] --tags bootcamp-session=azure-deep-dive`
-
-### Create a deployment
-
-`az group deployment create -g [MyResourceGroupName] --template-file .\my-provisioning-template.json`
-
-### Delete a resource group
-
-`az group delete -n [MyResourceGroupName]`
+    * Caching
+        * Cache aside vs read-through cache vs write-through cache: http://www.ehcache.org/documentation/3.5/caching-patterns.html
+    * Materialised views
+    * Sharding
+    * Microsoft's cloud patterns book: https://docs.microsoft.com/en-us/azure/architecture/patterns/
+* Architecture breakout sessions
+* Wrap up and questions
