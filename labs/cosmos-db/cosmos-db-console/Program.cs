@@ -25,8 +25,7 @@ namespace CosmosDb.Console
             var myDocumentToPersist = new MyDocument
             {
                 Id = Guid.NewGuid().ToString(),
-                Message = "test",
-                Offset = 123
+                Message = "test"
             };
 
             client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri(databaseName, collectionName), myDocumentToPersist).Wait();
@@ -45,6 +44,5 @@ namespace CosmosDb.Console
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
         public string Message { get; set; }
-        public int Offset { get; set; }
     }
 }
