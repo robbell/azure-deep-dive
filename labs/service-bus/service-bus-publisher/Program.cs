@@ -6,7 +6,7 @@ namespace ServiceBus.Publisher
 {
     public class Program
     {
-        private const string connectionString = "Endpoint=sb://robnamespace2.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=usByg0LJsnkuZhRCCucFsy7EyOMv1XrSaLFlYUvQ5DM=";
+        private const string connectionString = "[Replace with your connectionString]";
         private const string topicName = "MyTopic";
 
         public static void Main(string[] args)
