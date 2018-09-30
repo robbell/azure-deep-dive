@@ -40,7 +40,8 @@
               "type": "subscriptions",
               "dependsOn": [
                 "[variables('serviceBusTopicName')]"
-              ]
+              ],
+              "properties": {}
             },
             {
               "apiVersion": "2017-04-01",
@@ -48,12 +49,18 @@
               "type": "subscriptions",
               "dependsOn": [
                 "[variables('serviceBusTopicName')]"
-              ]
+              ],
+              "properties": {}
             }
           ]
         }
       ]
     }
   ],
-  "outputs": {}
+  "outputs": {
+    "ConnectionString": {
+      "type": "string",
+      "value": "[listKeys(resourceId(resourceGroup().name, 'Microsoft.ServiceBus/namespaces/authorizationRules', parameters('serviceBusNamespaceName'), 'RootManageSharedAccessKey'), '2017-04-01').primaryConnectionString]"
+    }
+  }
 }
