@@ -52,5 +52,6 @@ My Azure Deep Dive course material from the ASOS Emerging Talent Bootcamp.
     * Materialised views
     * Sharding
     * Microsoft's cloud patterns book: https://docs.microsoft.com/en-us/azure/architecture/patterns/
+    * Azure developer's guide: https://azure.microsoft.com/en-gb/campaigns/developer-guide/?v=18.31
 * Architecture breakout sessions
 * Wrap up and questions
