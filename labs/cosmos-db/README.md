@@ -10,7 +10,7 @@
 
 Get a list of available subscriptions:
 
-`az acount list`
+`az account list`
 
 Set the active subscription:
 
