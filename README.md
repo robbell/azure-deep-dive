@@ -51,7 +51,9 @@ My Azure Deep Dive course material from the ASOS Emerging Talent Bootcamp.
         * Cache aside vs read-through cache vs write-through cache: http://www.ehcache.org/documentation/3.5/caching-patterns.html
     * Materialised views
     * Sharding
+    * Circuit breaker
     * Microsoft's cloud patterns book: https://docs.microsoft.com/en-us/azure/architecture/patterns/
     * Azure developer's guide: https://azure.microsoft.com/en-gb/campaigns/developer-guide/?v=18.31
+    * High Scalability blog: http://highscalability.com/
 * Architecture breakout sessions
 * Wrap up and questions
